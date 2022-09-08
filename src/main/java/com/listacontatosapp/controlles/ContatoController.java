@@ -8,6 +8,6 @@ public class ContatoController {
 
 	@RequestMapping("/cadastrarContato")
 	public String form() {
-		return "formContato";
+		return "Contatos/formContato";
 	}
 }
