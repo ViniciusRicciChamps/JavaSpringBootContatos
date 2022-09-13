@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+	crossorigin="anonymous"></script>
+<title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Editar contato</h1>
+		<br> <br>
+		<div class="alert alert-success alert-dismissible"
+			th:each="m : ${msg}">
+			<span th:text="${m}"></span>
+		</div>
+
+		<th:block th:include="Contatos/MensagemValidacao"></th:block>
+		<form action="" method="post" th:object="${contatoobj}">
+			<label for="id">ID:</label> <input class="form-control"
+				type="text" value="" name="id" readonly="readonly" th:field="*{id}"> <label for="nome">Nome:</label>
+			<input class="form-control" type="text" value="" name="nome" th:field="*{nome}">
+			<label for="email">E-mail:</label> <input class="form-control"
+				type="text" value="" name="email" th:field="*{email}"><br> <label
+				for="contato">Contato:</label> <input class="form-control"
+				type="text" value="" name="contato" th:field="*{contato}" > <label for="recado">Recado:</label>
+			<input class="form-control" type="text" value="" name="recado" th:field="*{recado}">
+			<label for="endereco">Endereço:</label> <input class="form-control"
+				type="text" value="" name="endereco" th:field="*{endereco}"> <label for="cidade">Cidade:</label>
+			<input class="form-control" type="text" value="" name="cidade" th:field="*{cidade}">
+			<label for="estado">Estado:</label> <input class="form-control"
+				type="text" value="" name="estado" th:field="*{estado}"> <label for="numeroCasa">Nº:</label>
+			<input class="form-control" type="text" value="" name="numeroCasa" th:field="*{numeroCasa}">
+			<button class="btn btn-primary" type="submit" style="margin: 10px;">Salvar</button>
+
+		</form>
+		<a href="/">
+			<button class="btn btn-danger">Voltar</button>
+		</a>
+	</div>
+
+
+
+
+</body>
+</html>

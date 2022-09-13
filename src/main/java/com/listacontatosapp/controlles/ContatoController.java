@@ -38,7 +38,9 @@ public class ContatoController {
 		return "Contatos/formContato";
 	}
 	
-	@RequestMapping(value = "/cadastrarContato", method = RequestMethod.POST)
+	
+	//os asteriscos ignora o que vem antes da URL
+	@RequestMapping(method = RequestMethod.POST, value = "**/cadastrarContato" )
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView formulario(@Valid Contatos contatos, BindingResult result,
 			RedirectAttributes attributes) {
@@ -72,7 +74,8 @@ public class ContatoController {
 		return modelAndView;
 	}
 	
-	@GetMapping(value = "/editarcontato/{idContato}")
+	@GetMapping(value = "**/editarcontato/{idContato}")
+	//@RequestMapping(value = "**/editarcontato/{idContato}", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView editarContato(@PathVariable("idContato") Long id) {
 		ModelAndView modelAndView = new ModelAndView("Contatos/formContato");
@@ -84,7 +87,7 @@ public class ContatoController {
 	@GetMapping(value = "/deletarcontato/{idContato}")
 	public ModelAndView deletar(@PathVariable("idContato") Long id) {
 		cr.deleteById(id);
-		ModelAndView modelAndView = new ModelAndView("cadastrarContato");
+		ModelAndView modelAndView = new ModelAndView("Contatos/formContato");
 		modelAndView.addObject("contatos", cr.findAll());
 		return modelAndView;
 
