@@ -28,7 +28,7 @@
 		</div>
 
 		<th:block th:include="Contatos/MensagemValidacao"></th:block>
-		<form action="" method="post" th:object="${contatoobj}">
+		<form action="salvarcontato" method="post" th:object="${contatoobj}">
 			<label for="id">ID:</label> <input class="form-control"
 				type="text" value="" name="id" readonly="readonly" th:field="*{id}"> <label for="nome">Nome:</label>
 			<input class="form-control" type="text" value="" name="nome" th:field="*{nome}">

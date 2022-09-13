@@ -28,21 +28,20 @@
 		</div>
 
 		<th:block th:include="Contatos/MensagemValidacao"></th:block>
-		<form action="" method="post" th:object="${contatoobj}">
-			<label for="id">ID:</label> <input class="form-control"
-				type="text" value="" name="id" readonly="readonly" th:field="*{id}"> <label for="nome">Nome:</label>
-			<input class="form-control" type="text" value="" name="nome" th:field="*{nome}">
+		<form action="" method="post" th:object="${contatos}">
+			<label for="nome">Nome:</label>
+			<input class="form-control" type="text" value="" name="nome" >
 			<label for="email">E-mail:</label> <input class="form-control"
-				type="text" value="" name="email" th:field="*{email}"><br> <label
+				type="text" value="" name="email" ><br> <label
 				for="contato">Contato:</label> <input class="form-control"
-				type="text" value="" name="contato" th:field="*{contato}" > <label for="recado">Recado:</label>
-			<input class="form-control" type="text" value="" name="recado" th:field="*{recado}">
+				type="text" value="" name="contato"  > <label for="recado">Recado:</label>
+			<input class="form-control" type="text" value="" name="recado">
 			<label for="endereco">Endereço:</label> <input class="form-control"
-				type="text" value="" name="endereco" th:field="*{endereco}"> <label for="cidade">Cidade:</label>
-			<input class="form-control" type="text" value="" name="cidade" th:field="*{cidade}">
+				type="text" value="" name="endereco" > <label for="cidade">Cidade:</label>
+			<input class="form-control" type="text" value="" name="cidade" >
 			<label for="estado">Estado:</label> <input class="form-control"
-				type="text" value="" name="estado" th:field="*{estado}"> <label for="numeroCasa">Nº:</label>
-			<input class="form-control" type="text" value="" name="numeroCasa" th:field="*{numeroCasa}">
+				type="text" value="" name="estado" > <label for="numeroCasa">Nº:</label>
+			<input class="form-control" type="text" value="" name="numeroCasa" >
 			<button class="btn btn-primary" type="submit" style="margin: 10px;">Salvar</button>
 
 		</form>

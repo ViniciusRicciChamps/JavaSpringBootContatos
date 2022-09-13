@@ -48,7 +48,6 @@ public class ContatoController {
 			ModelAndView modelAndView = new ModelAndView("Contatos/formContato");
 			Iterable<Contatos> iterableContatos = cr.findAll();
 			modelAndView.addObject("contatos", iterableContatos);
-			modelAndView.addObject("contatosobj", contatos);
 			
 			List<String> msg = new ArrayList<String>();
 			for(ObjectError error : result.getAllErrors()) {
@@ -74,14 +73,40 @@ public class ContatoController {
 		return modelAndView;
 	}
 	
-	@GetMapping(value = "**/editarcontato/{idContato}")
+	@GetMapping(value = "/editarcontato/{idContato}")
 	//@RequestMapping(value = "**/editarcontato/{idContato}", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView editarContato(@PathVariable("idContato") Long id) {
-		ModelAndView modelAndView = new ModelAndView("Contatos/formContato");
+		ModelAndView modelAndView = new ModelAndView("Contatos/formEditarContato");
 		Optional<Contatos> contato = cr.findById(id);
 		modelAndView.addObject("contatoobj", contato.get());
 		return modelAndView;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "**/salvarcontato")
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView salvarAlteracao(@Valid Contatos contatos, BindingResult result,
+			RedirectAttributes attributes) {
+		if (result.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("Contatos/formEditarContato");
+			Iterable<Contatos> iterableContatos = cr.findAll();
+			//modelAndView.addObject("contatos", iterableContatos);
+			modelAndView.addObject("contatoobj", new Contatos());
+			
+			List<String> msg = new ArrayList<String>();
+			for(ObjectError error : result.getAllErrors()) {
+				msg.add(error.getDefaultMessage());
+			}
+			 modelAndView.addObject("msg", msg);
+			return modelAndView;
+		}
+		cr.save(contatos);
+		ModelAndView AndView = new ModelAndView("Contatos/formEditarContato");
+		Iterable<Contatos> iterableContatos = cr.findAll();
+		//AndView.addObject("contatos", iterableContatos);
+		AndView.addObject("contatoobj", new Contatos());
+		return AndView;
+
 	}
 	
 	@GetMapping(value = "/deletarcontato/{idContato}")
